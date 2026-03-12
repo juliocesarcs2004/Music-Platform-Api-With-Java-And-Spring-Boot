@@ -24,11 +24,11 @@ public class Principal {
             var menu = """
                     *** Screen Sound Músicas ***                    
                     
-                    1- Cadastrar artistas
-                    2- Cadastrar músicas
-                    3- Listar músicas
-                    4- Buscar músicas por artistas
-                    5- Pesquisar dados sobre um artista
+                    1 - Cadastrar artistas
+                    2 - Cadastrar músicas
+                    3 - Listar músicas
+                    4 - Buscar músicas por artistas
+                    5 - Pesquisar dados sobre um artista
                     
                     9 - Sair
                     """;
@@ -66,12 +66,15 @@ public class Principal {
     }
 
     private void buscarMusicasPorArtista() {
-
+        System.out.println("Buscar músicas de que artista ? ");
+        var nome = leitura.nextLine();
+        List<Musica> musicas = repositorio.buscaMusicasPorArtista(nome);
+        musicas.forEach(System.out::println);
     }
 
     private void listarMusicas() {
         List<Artista> artistas = repositorio.findAll();
-        artistas.forEach(System.out::println);
+        artistas.forEach(a-> a.getMusicas().forEach(System.out::println));
     }
 
     private void cadastrarMusicas() {
